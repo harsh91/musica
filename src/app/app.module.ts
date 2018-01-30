@@ -8,14 +8,23 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { MusicProvider } from '../providers/music/music';
+import { MusicPlayerPage } from '../pages/music-player/music-player';
+
+import { HttpModule } from '@angular/http';
+
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { MediaPlugin } from '@ionic-native/media';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    MusicPlayerPage
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
   ],
@@ -23,12 +32,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    MusicPlayerPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    MusicProvider,
+    HttpModule,
+    SocialSharing,
+    MediaPlugin
   ]
 })
 export class AppModule {}
